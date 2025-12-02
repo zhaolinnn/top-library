@@ -1,5 +1,4 @@
 const myLibrary = [];
-const preAdd = [];
 
 function Book(title, author, pages, url, id) {
     this.title = title;
@@ -13,12 +12,16 @@ function addBookToLibrary(title, author, pages, url) {
     const randomID = crypto.randomUUID();
     const newBook = new Book(title, author, pages, url, randomID);
 
-    preAdd.push(newBook);
     myLibrary.push(newBook);
 }
 
 function displayBook() {
+    const dupes = document.getElementById('library');
+    dupes.innerHTML = ''; // <--- clear before re-rendering
+
     for (let i = 0; i < myLibrary.length; i++) {
+        console.log(myLibrary);
+    
         const newDiv = document.createElement('div');
         const newCoverImgDiv = document.createElement('img');
         const newTitleDiv = document.createElement('div');
@@ -29,13 +32,13 @@ function displayBook() {
 
         newDiv.classList.add('book-square');
 
-        newCoverImgDiv.setAttribute("src", `${preAdd[i].url}`);
+        newTitleDiv.textContent = `${myLibrary[i].title}`;
+        newAuthorDiv.textContent = `${myLibrary[i].author}`;
+        newPageDiv.textContent = `${myLibrary[i].pages}`;
+
+        newCoverImgDiv.setAttribute("src", `${myLibrary[i].url}`);
         newCoverImgDiv.setAttribute("height", "150");
         newCoverImgDiv.setAttribute("width", "100");
-
-        newTitleDiv.textContent = `${preAdd[i].title}`;
-        newAuthorDiv.textContent = `${preAdd[i].author}`;
-        newPageDiv.textContent = `${preAdd[i].pages}`;
 
         newDiv.appendChild(newCoverImgDiv);
         newDiv.appendChild(newTitleDiv);
@@ -43,9 +46,9 @@ function displayBook() {
         newDiv.appendChild(newPageDiv);
 
         existingDiv.appendChild(newDiv);
-
-        preAdd.pop();
+  
     }
+    
 }
 
 function getInputValue() {
