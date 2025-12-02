@@ -1,0 +1,23 @@
+.book-square {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-width: 6px;
+    border-bottom: #ffffff;
+    border-top: #ffffff;
+    border-right: #ffffff;
+    border-left: #ffffff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    border-radius: 10px;
+    border-style: solid;
+    width: 200px;
+
+}
+
+#library {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    grid-template-rows: 300px 300px 300px 300px;
+    gap: 20px;
+}

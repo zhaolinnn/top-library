@@ -8,6 +8,50 @@
     <script src="scripts.js" defer></script> 
 </head>
 <body>
+    <div class="toolbar"> 
+        <dialog>
+            <button autofocus id="close">Close</button>
+            <input
+                type="text"
+                id="title"
+                name="title"
+                required
+                minlength="0"
+                maxlength="20"
+                size="10" />
+            <input
+                type="text"
+                id="author"
+                name="author"
+                required
+                minlength="0"
+                maxlength="20"
+                size="10" />
+            <input
+                type="text"
+                id="pages"
+                name="pages"
+                required
+                minlength="0"
+                maxlength="20"
+                size="10" />
+            <input
+                type="text"
+                id="url"
+                name="url"
+                required
+                minlength="0"
+                maxlength="999"
+                size="10" />
+
+            <button id="submit">Submit</button>
+        </dialog>
+        <button id="add">Add Book</button>
+    </div>
+
+    <div id="library">
+        
+    </div>
     
 </body>
 </html>
