@@ -31,10 +31,12 @@ function displayBook() {
         const existingDiv = document.getElementById('library');
 
         newDiv.classList.add('book-square');
+        newTitleDiv.classList.add('book-title');
+        newPageDiv.classList.add('page-count');
 
         newTitleDiv.textContent = `${myLibrary[i].title}`;
         newAuthorDiv.textContent = `${myLibrary[i].author}`;
-        newPageDiv.textContent = `${myLibrary[i].pages}`;
+        newPageDiv.textContent = `${myLibrary[i].pages} pages`;
 
         newCoverImgDiv.setAttribute("src", `${myLibrary[i].url}`);
         newCoverImgDiv.setAttribute("height", "150");
@@ -70,7 +72,7 @@ function getInputValue() {
 
 
 const dialog = document.querySelector("dialog");
-const showButton = document.querySelector("dialog + button");
+const showButton = document.querySelector("#add");
 const closeButton = document.querySelector("#close");
 const submitButton = document.querySelector("#submit")
 
@@ -88,3 +90,8 @@ submitButton.addEventListener("click", () => {
     addBookToLibrary(userData.titleValue, userData.authorValue, userData.pagesValue, userData.urlValue);
     displayBook();
 })
+
+addBookToLibrary("Harry Potter and the Sorcerers Stone", "J. K. Rowling", 223, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBe8CKdq1DMUFU2gWHU6MSix4eczSInFBIpg&s");
+addBookToLibrary("Atomic Habits", "James Clear", 320, "https://m.media-amazon.com/images/I/81kg51XRc1L._AC_UF1000,1000_QL80_.jpg");
+addBookToLibrary("The Way of Zen", "Alan Watts", 256, "https://m.media-amazon.com/images/I/61pDzhG+wCL._AC_UF1000,1000_QL80_.jpg");
+displayBook();
