@@ -7,9 +7,10 @@ body {
 }
 
 .book-square {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 200px;
+    grid-template-rows: 150px 30px 20px 20px 20px 20px;
+    justify-items: center;
     gap: 15px;
     border-width: 6px;
     border-bottom: #e8e8e8;
@@ -21,6 +22,7 @@ body {
     border-radius: 10px;
     border-style: solid;
     width: 200px;
+    height: 350px;
     padding-top: 20px;
 
 }
@@ -68,5 +70,60 @@ body {
 }
 
 .page-count {
-    padding-bottom: 25px;
+    padding-bottom: 10px;
+}
+
+.deleteButton {
+    height: 22px;
+    width: 100px;
+}
+
+.haveNotRead {
+    background-color: red;
+    color: #ffffff;
+    border-bottom: red;
+    border-top: red;
+    border-right: red;
+    border-left: red;
+    border-radius: 2px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.haveRead {
+    background-color: #80ed99;
+    border-bottom: #80ed99;
+    border-top: #80ed99;
+    border-right: #80ed99;
+    border-left: #80ed99;
+    border-radius: 2px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.deleteButton {
+    border-bottom: #e8e8e8;
+    border-top: #e8e8e8;
+    border-right: #e8e8e8;
+    border-left: #e8e8e8;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    background-color: #ffffff;
+}
+
+dialog[open] {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: 20px 20px 20px 20px 20px 20px;
+    justify-content: center;
+    gap: 15px;
+
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+dialog:not([open]) {
+    display: none;
 }

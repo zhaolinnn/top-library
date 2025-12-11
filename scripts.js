@@ -27,6 +27,14 @@ function displayBook() {
         const newTitleDiv = document.createElement('div');
         const newAuthorDiv = document.createElement('div');
         const newPageDiv = document.createElement('div');
+        const deleteButton = document.createElement('button');
+        const readButton = document.createElement('button');
+
+        deleteButton.textContent = "Delete Book";
+        readButton.textContent = "Read";
+
+        deleteButton.classList.add("deleteButton");
+        readButton.classList.add("haveNotRead");
 
         const existingDiv = document.getElementById('library');
 
@@ -42,10 +50,37 @@ function displayBook() {
         newCoverImgDiv.setAttribute("height", "150");
         newCoverImgDiv.setAttribute("width", "100");
 
+        deleteButton.setAttribute('data-id', myLibrary[i].id);
+
+        deleteButton.addEventListener('click', (e) => {
+            const idToDelete = e.currentTarget.getAttribute('data-id');
+            for (let j = 0; j < myLibrary.length; j++) {
+                if (myLibrary[j].id === idToDelete) {
+                    myLibrary.splice(j, 1);
+                    break;
+                }
+            }
+            displayBook();
+        });
+
+        readButton.addEventListener('click', (e) => {
+            if (readButton.classList.contains("haveNotRead")) {
+                readButton.classList.remove('haveNotRead');
+                readButton.classList.add('haveRead');
+            }
+            else {
+                readButton.classList.remove('haveRead');
+                readButton.classList.add('haveNotRead');
+            }
+            
+        });
+
         newDiv.appendChild(newCoverImgDiv);
         newDiv.appendChild(newTitleDiv);
         newDiv.appendChild(newAuthorDiv);
         newDiv.appendChild(newPageDiv);
+        newDiv.appendChild(readButton);
+        newDiv.appendChild(deleteButton);
 
         existingDiv.appendChild(newDiv);
   
@@ -69,26 +104,27 @@ function getInputValue() {
     return { titleValue: titleValue, authorValue: authorValue, pagesValue: pagesValue, urlValue: urlValue };
 }
 
-
-
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("#add");
 const closeButton = document.querySelector("#close");
-const submitButton = document.querySelector("#submit")
+const submitButton = document.querySelector("#submit");
 
 showButton.addEventListener("click", () => {
     dialog.showModal();
 })
 
-closeButton.addEventListener("click", () => {
+closeButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log('close clicked');
     dialog.close();
 })
 
-submitButton.addEventListener("click", () => {
+submitButton.addEventListener("click", (event) => {
     event.preventDefault();
     const userData = getInputValue();
     addBookToLibrary(userData.titleValue, userData.authorValue, userData.pagesValue, userData.urlValue);
     displayBook();
+    dialog.close();
 })
 
 addBookToLibrary("Harry Potter and the Sorcerers Stone", "J. K. Rowling", 223, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBe8CKdq1DMUFU2gWHU6MSix4eczSInFBIpg&s");
