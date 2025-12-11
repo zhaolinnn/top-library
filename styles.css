@@ -111,10 +111,8 @@ body {
 dialog[open] {
     display: grid;
     grid-template-columns: 300px;
-    grid-template-rows: 20px 20px 20px 20px 20px 20px;
+    grid-template-rows: 50px 250px 30px;
     justify-content: center;
-    gap: 15px;
-
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -126,4 +124,32 @@ dialog[open] {
 
 dialog:not([open]) {
     display: none;
+}
+
+#close, #submit {
+    width: 75px;
+    height: 30px;
+    border-bottom: #e8e8e8;
+    border-top: #e8e8e8;
+    border-right: #e8e8e8;
+    border-left: #e8e8e8;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+input {
+    border-bottom: #e8e8e8;
+    border-top: #e8e8e8;
+    border-right: #e8e8e8;
+    border-left: #e8e8e8;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    background-color: #edede9;
+    border-radius: 5px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
